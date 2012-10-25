@@ -22,7 +22,7 @@
         }
 
         $('#twitter-sign-in-btn').click(function(){
-            $.oauthpopup({
+            $.popupcallback({
                 path: $(this).attr('href'),
                 callback: function(){
                     var url = removeUrlParameter(window.location.href, 'signout');

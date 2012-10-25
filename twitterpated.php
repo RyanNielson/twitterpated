@@ -8,6 +8,15 @@
  * Description: Adds the ability to render twitter feeds using oAuth.
  */
 
+
+function on_activate() {
+        $role = get_role('administrator');
+        //foreach ($custom_post_types as $singular => $plural) {
+            $role->add_cap("twitterpated_administer");
+        //e}
+    }
+
+
 require_once('wptwitterhandler.php');
 
 class Twitterpated {
@@ -33,9 +42,11 @@ class Twitterpated {
             <h2>Twitterpated Settings</h2>
 
             <form method="post" action="options.php"> 
-                <?php settings_fields('twitterpated_admin_settings_section'); ?>
-                <?php do_settings_sections( 'twitterpated_settings' ); ?>
-                <?php submit_button(); ?>
+                <?php if (current_user_can('twitterpated_administer')) { ?>
+                    <?php settings_fields('twitterpated_admin_settings_section'); ?>
+                    <?php do_settings_sections( 'twitterpated_settings' ); ?>
+                    <?php submit_button(); ?>
+                <?php } ?>
             </form>
 
             <?php
@@ -50,14 +61,18 @@ class Twitterpated {
 
         <?php
     }
+
+    public function on_activate() {
+        $role = get_role('administrator');
+        $role->add_cap("twitterpated_administer");
+    }
 }
 
 add_action('admin_menu', 'twitterpated_settings');
 function twitterpated_settings() {
     $twitterpated = new Twitterpated();
-   // add_submenu_page('options-general.php', 'Twitterpated Settings', 'Twitterpated Settings', 'manage_options', 'twitterpated_settings', array(&$twitterpated, 'settings_display'));
 
-     add_menu_page('Twitterpated Settings', 'Twitterpated Settings', 'manage_options', 'twitterpated_settings', array(&$twitterpated, 'settings_display'));
+    add_menu_page('Twitterpated Settings', 'Twitterpated Settings', 'manage_options', 'twitterpated_settings', array(&$twitterpated, 'settings_display'));
 }
 
 add_action('admin_init', 'twitterpated_init_settings');
@@ -86,7 +101,7 @@ function twitterpated_get_timeline() {
 
 add_action('admin_enqueue_scripts', 'twitterpated_add_admin_scripts');
 function twitterpated_add_admin_scripts() {
-    wp_enqueue_script('oauth_popup_script',  plugins_url('js/jquery.oauthpopup.js' , __FILE__));
+    wp_enqueue_script('oauth_popup_script',  plugins_url('js/jquery.popupcallback.js' , __FILE__));
     wp_enqueue_script('twitterpated_admin_script',  plugins_url('js/twitterpated.admin.js' , __FILE__));
 }
 
@@ -94,5 +109,7 @@ add_action('wp_enqueue_scripts', 'twitterpated_add_javascripts');
 function twitterpated_add_javascripts() {
     wp_enqueue_script('twitter_widget_script', 'http://platform.twitter.com/widgets.js'); // Already enqueued on EVERY page by NextGen :S 
 }
+
+register_activation_hook(__FILE__, array('Twitterpated', 'on_activate'));
 
 ?>
