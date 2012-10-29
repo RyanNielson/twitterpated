@@ -93,9 +93,9 @@ function twitterpated_textfield_callback($args) {
     echo $html;  
 }
 
-function twitterpated_get_timeline() {
+function twitterpated_get_timeline($count = 1) {
     $handler = new WPTwitterHandler();
-    return $handler->user_timeline('twitter_user_timeline', array('count' => 3));
+    return $handler->user_timeline('twitter_user_timeline', array('count' => $count));
 }
 
 
@@ -107,7 +107,16 @@ function twitterpated_add_admin_scripts() {
 
 add_action('wp_enqueue_scripts', 'twitterpated_add_javascripts');
 function twitterpated_add_javascripts() {
+    wp_enqueue_script('twitterpated_client_script', plugins_url('js/twitterpated.client.js' , __FILE__));
     wp_enqueue_script('twitter_widget_script', 'http://platform.twitter.com/widgets.js'); // Already enqueued on EVERY page by NextGen :S 
+}
+
+add_action('wp_ajax_twitterpated_get_timeline', 'twitterpated_ajax_get_timeline');
+add_action('wp_ajax_nopriv_twitterpated_get_timeline', 'twitterpated_ajax_get_timeline');
+function twitterpated_ajax_get_timeline() {
+    $count = $_GET['count'];
+    echo trim(stripslashes(json_encode(twitterpated_get_timeline($count))), '"');
+    die();
 }
 
 register_activation_hook(__FILE__, array('Twitterpated', 'on_activate'));
