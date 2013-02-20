@@ -1,6 +1,6 @@
 <?php
-    require_once('wptwitterhandler.php');
+    require_once('twitterhandler.php');
     session_start();
-    $handler = new WPTwitterHandler();
+    $handler = new TwitterHandler();
     $handler->authorize();
 ?>

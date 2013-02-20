@@ -9,15 +9,10 @@
  */
 
 
-function on_activate() {
-        $role = get_role('administrator');
-        //foreach ($custom_post_types as $singular => $plural) {
-            $role->add_cap("twitterpated_administer");
-        //e}
-    }
-
-
-require_once('wptwitterhandler.php');
+require_once('TwitterHandler.php');
+require_once('tweet.php');
+require_once('twitteruser.php');
+require_once('tweetfeed.php');
 
 class Twitterpated {
    
@@ -51,7 +46,7 @@ class Twitterpated {
 
             <?php
             if (get_option('twitterpated_consumer_key') && get_option('twitterpated_consumer_secret')) {
-                $handler = new WPTwitterHandler();
+                $handler = new TwitterHandler();
                 $handler->authorize();
             }
             ?>
@@ -93,11 +88,14 @@ function twitterpated_textfield_callback($args) {
     echo $html;  
 }
 
-function twitterpated_get_timeline($count = 1) {
-    $handler = new WPTwitterHandler();
-    return $handler->user_timeline('twitter_user_timeline', array('count' => $count));
-}
+function twitterpated_get_timeline($count = 1, $screen_name) {
+    $handler = new TwitterHandler();
+    $parameters = array('count' => $count);
+    if ($screen_name)
+        $parameters['screen_name'] = $screen_name;
 
+    return $handler->user_timeline('twitter_user_timeline', $parameters);
+}
 
 add_action('admin_enqueue_scripts', 'twitterpated_add_admin_scripts');
 function twitterpated_add_admin_scripts() {
