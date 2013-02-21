@@ -3,6 +3,7 @@
 if (!class_exists('TwitterUser')) {
     class TwitterUser 
     {
+        public $id = null;
         public $name = null;
         public $screen_name = null;
         public $profile_url = null;
@@ -11,6 +12,7 @@ if (!class_exists('TwitterUser')) {
         public $follow_request_sent = false;
       
         function __construct($arguments = array()) {
+            $this->name = $arguments['id'];
             $this->name = $arguments['name'];
             $this->screen_name = $arguments['screen_name'];
             $this->profile_url = $arguments['profile_url'];

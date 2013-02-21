@@ -1,3 +1,7 @@
 .twitterpated-feed {
   width: 350px;
 }
+
+.twitterpated-feed .footer {
+  border: none;
+}

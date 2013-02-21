@@ -10,18 +10,12 @@ if (!class_exists('TweetFeed')) {
         }
 
         function render() {
-            ?>
+             ?>
 
-            <div class="twitterpated-feed">
-
-            <?php
-
-            foreach ($this->tweets as $tweet) {
-                $tweet->render();
-            }
-
-            ?>
-
+            <div class="twitterpated-feed" class="stream">
+                <ol class="h-feed">
+                <?php foreach ($this->tweets as $tweet) { $tweet->render(); } ?>
+                </ol>
             </div>
 
             <?php
