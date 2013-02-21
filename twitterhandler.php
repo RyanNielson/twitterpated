@@ -137,10 +137,6 @@ if (!class_exists('TwitterHandler')) {
         }
 
         function user_timeline($cache_key, $parameters=array(), $echo=false) {
-            // echo '<pre>';
-            // print_r($this->get('statuses/user_timeline', $cache_key . '_json', $parameters));
-            // echo '</pre>';
-            // $tweets = $this->get('statuses/user_timeline', $cache_key . '_json', $parameters);
             $tweet_feed = $this->get_cache_value($cache_key);
             if ($tweet_feed === false) {
                 $tweets = $this->get('statuses/user_timeline', $cache_key . '_json', $parameters);
