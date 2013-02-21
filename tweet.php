@@ -104,7 +104,7 @@ if (!class_exists('Tweet')) {
             ?>
             <li class="tweet h-entry" data-tweet-id="<?php echo $this->id; ?>">
   
-                <a class="u-url permalink customisable-highlight" href="https://twitter.com/<?php echo $this->user->screen_name; ?>/statuses/<?php echo $this->id; ?>" data-datetime="<?php echo $this->created_at; ?>"><time pubdate="" class="dt-updated" datetime="<?php echo $this->created_at; ?>" title="Time posted: <?php $this->formatted_posted_datetime(); ?>"><?php echo $this->formatted_posted_datetime(); ?></time></a>
+                <a class="u-url permalink customisable-highlight" href="https://twitter.com/<?php echo $this->user->screen_name; ?>/statuses/<?php echo $this->id; ?>" data-datetime="<?php echo $this->created_at; ?>" target="_blank"><time pubdate="" class="dt-updated" datetime="<?php echo $this->created_at; ?>" title="Time posted: <?php echo $this->created_at; ?>"><?php echo $this->formatted_posted_datetime(); ?></time></a>
 
                 <div class="header h-card p-author">
                     <a class="u-url profile" href="https://twitter.com/intent/user?screen_name=<?php echo $this->user->screen_name; ?>" aria-label="<?php echo $this->user->name; ?> (screen name: <?php echo $this->user->screen_name; ?>)">
