@@ -88,25 +88,39 @@ function twitterpated_textfield_callback($args) {
     echo $html;  
 }
 
-function twitterpated_get_timeline($count = 1, $screen_name) {
+function twitterpated_timeline($screen_name, $count = 1, $echo = true) {
     $handler = new TwitterHandler();
-    $parameters = array('count' => $count);
-    if ($screen_name)
-        $parameters['screen_name'] = $screen_name;
 
-    return $handler->user_timeline('twitter_user_timeline', $parameters);
+    $cache_key = "twitterpated_feed_" . $screen_name .  "_$count";
+    $parameters = array('screen_name' => $screen_name, 'count' => $count);
+    
+    ob_start();
+    $handler->user_timeline($cache_key, $parameters);
+    $contents = ob_get_contents();
+    ob_end_clean();
+
+    if ($echo)
+        echo $contents;
+    else
+        return $contents;
 }
 
 add_action('admin_enqueue_scripts', 'twitterpated_add_admin_scripts');
 function twitterpated_add_admin_scripts() {
-    wp_enqueue_script('oauth_popup_script',  plugins_url('js/jquery.popupcallback.js' , __FILE__));
-    wp_enqueue_script('twitterpated_admin_script',  plugins_url('js/twitterpated.admin.js' , __FILE__));
+    wp_enqueue_script('oauth_popup_script',  plugins_url('javascripts/jquery.popupcallback.js' , __FILE__));
+    wp_enqueue_script('twitterpated_admin_script',  plugins_url('javascripts/twitterpated.admin.js' , __FILE__));
 }
 
 add_action('wp_enqueue_scripts', 'twitterpated_add_javascripts');
 function twitterpated_add_javascripts() {
-    wp_enqueue_script('twitterpated_client_script', plugins_url('js/twitterpated.client.js' , __FILE__));
+    wp_enqueue_script('twitterpated_client_script', plugins_url('javascripts/twitterpated.client.js' , __FILE__));
     wp_enqueue_script('twitter_widget_script', 'http://platform.twitter.com/widgets.js'); // Already enqueued on EVERY page by NextGen :S 
+}
+
+add_action('wp_enqueue_scripts', 'twitterpated_add_styles');
+function twitterpated_add_styles() {
+    wp_enqueue_style('twitterpated_timeline_style', 'http://platform.twitter.com/embed/timeline.css');
+    wp_enqueue_style('twitterpated_style', plugins_url('stylesheets/twitterpated.css' , __FILE__));
 }
 
 add_action('wp_ajax_twitterpated_get_timeline', 'twitterpated_ajax_get_timeline');

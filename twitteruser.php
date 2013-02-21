@@ -18,10 +18,6 @@ if (!class_exists('TwitterUser')) {
             $this->following = $arguments['following'];
             $this->follow_request_sent = $arguments['follow_request_sent'];
         }
-
-        function render() {
-
-        }
     }
 }
 

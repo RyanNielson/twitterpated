@@ -124,14 +124,14 @@ if (!class_exists('TwitterHandler')) {
 
         function get($endpoint, $cache_key, $parameters=array()) {
             $content = false;
-            if ($this->use_cache($cache_key)) // Ryan Removed
-                $content = $this->get_cache_value($cache_key);
+             // if ($this->use_cache($cache_key))
+             //     $content = $this->get_cache_value($cache_key);
             if ($content === false) {
                 if ($this->check_credentials()) {
                     $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $this->access_token['oauth_token'], $this->access_token['oauth_token_secret']);
                     $content = $connection->get($endpoint, $parameters);
-                    if ($this->use_cache($cache_key))
-                        $this->save_cache_value($cache_key, $content);
+                    // if ($this->use_cache($cache_key))
+                    //     $this->save_cache_value($cache_key, $content);
                 }
                 else
                     echo 'CREDENTIALS NO GOOD';
@@ -141,12 +141,12 @@ if (!class_exists('TwitterHandler')) {
         }
 
         function user_timeline($cache_key, $parameters=array(), $echo=false) {
-            $content = $this->get_cache_value($cache_key);
-            if ($content === false) {
+            $tweet_feed = $this->get_cache_value($cache_key);
+            if ($tweet_feed === false) {
                 $tweets = $this->get('statuses/user_timeline', $cache_key . '_json', $parameters);
-               
                 $content = '';
 
+                $tweet_feed = new TweetFeed();
                 foreach ($tweets as $tweet) {
                     $tweetthing = new Tweet(
                         array(
@@ -167,10 +167,17 @@ if (!class_exists('TwitterHandler')) {
                         )
                     );
 
-                    $tweetthing->render();
+                    // $tweetthing->render();
+                    $tweet_feed->add_tweet($tweetthing);
                 }
 
+                $this->save_cache_value($cache_key, serialize($tweet_feed));
             }
+            else {
+                $tweet_feed = unserialize($tweet_feed);
+            }
+
+            $tweet_feed->render();
 
             return $content;
         }
@@ -219,7 +226,7 @@ if (!class_exists('TwitterHandler')) {
         }
 
         function save_cache_value($key, $value) {
-            return set_transient($key, $value, 5);
+            return set_transient($key, $value, 300);
         }
     }
 }

@@ -21,37 +21,50 @@ if (!class_exists('Tweet')) {
             $text = $this->text;
         }
 
-        private function replace_entities() {
-            $text = $this->text;
-            $replacements = array();
+        private function formatted_tweet_text() {
+            $text = $this->replace_hashtags($this->text);
+            $text = $this->replace_mentions($text);
 
+            return $text;
+        }
+
+        private function replace_hashtags($text) {
             $replaced_hashtags = array();
             foreach ($this->entities->hashtags as $key => $hashtag) {
-                $replaced_hashtags[] = $hashtag->text;
-                $text = preg_replace('/#' . $hashtag->text . '\b/i', '<a href="https://twitter.com/search?q=%23' . $hashtag->text . '&amp;src=hash" data-query-source="hashtag_click" class="hashtag customisable" dir="ltr" rel="tag" target="_blank">#<b>' . $hashtag->text . '</b></a>', $text);
+                if (!in_array($hashtag->text, $replaced_hashtags)) {
+                    $replaced_hashtags[] = $hashtag->text;
+                    $text = preg_replace('/#' . $hashtag->text . '\b/', '<a href="https://twitter.com/search?q=%23' . $hashtag->text . '&amp;src=hash" data-query-source="hashtag_click" class="hashtag customisable" dir="ltr" rel="tag" target="_blank">#<b>' . $hashtag->text . '</b></a>', $text);
+                }
             }
 
+            return $text;
+        }
+
+        private function replace_mentions($text) {
             $replaced_users = array();
             foreach ($this->entities->user_mentions as $key => $user_mention) {
                 if (!in_array($user_mention->screen_name, $replaced_users)) {
                     $replaced_users[] = $user_mention->screen_name;
-                    $text = preg_replace('/@' . $user_mention->screen_name . '\b/i', '<a href="https://twitter.com/intent/user?screen_name=' . $user_mention->screen_name . '" class="profile customisable h-card" dir="ltr">@<b class="p-nickname">' . $user_mention->screen_name . '</b></a>', $text);
+                    $text = preg_replace('/@' . $user_mention->screen_name . '\b/', '<a href="https://twitter.com/intent/user?screen_name=' . $user_mention->screen_name . '" class="profile customisable h-card" dir="ltr">@<b class="p-nickname">' . $user_mention->screen_name . '</b></a>', $text);
                 }
             }
 
-           
             return $text;
         }
 
+        private function formatted_posted_datetime() {
+            $date_str = $this->created_at;
+            $timestamp = strtotime($date_str);
+            return date('g:i A - j M y', $timestamp);
+        }
+
         function render() {
-            $tweet_text = $this->replace_entities();
             ?>
 
-            <link id="twitter-widget-css" rel="stylesheet" type="text/css" href="http://platform.twitter.com/embed/timeline.996256af577d2c3d78784b9bf8b648c6.default.css">
-            <div class="root standalone-tweet ltr twitter-tweet not-touch" dir="ltr"  lang="en" >
+            <div class="root standalone-tweet ltr twitter-tweet not-touch" dir="ltr"  lang="en" width="500">
                 <blockquote class="tweet subject expanded h-entry" data-tweet-id="<?php echo $this->id; ?>" cite="https://twitter.com/<?php echo $this->user->screen_name; ?>/status/<?php echo $this->id; ?>">
                     <div class="header h-card p-author">
-                        <a class="u-url profile" href="https://twitter.com/<?php echo $this->user->screen_name; ?>" aria-label="<?php echo $this->user->name; ?> (screen name: <?php echo $this->user->screen_name; ?>)">
+                        <a class="u-url profile" href="https://twitter.com/intent/user?screen_name=<?php echo $this->user->screen_name; ?>" aria-label="<?php echo $this->user->name; ?> (screen name: <?php echo $this->user->screen_name; ?>)">
                             <img class="u-photo avatar" alt="" src="<?php echo $this->user->profile_image_url; ?>" width="48" height="48">
                             <span class="full-name">
                                 <span class="p-name customisable-highlight"><?php echo $this->user->name; ?></span>
@@ -63,11 +76,11 @@ if (!class_exists('Tweet')) {
                     
                     <div class="e-entry-content">
                         <p class="e-entry-title">
-                            <?php echo $tweet_text; ?>
+                            <?php echo $this->formatted_tweet_text(); ?>
                         </p>
                         <div class="dateline">
                             <a class="u-url customisable-highlight long-permalink" href="https://twitter.com/<?php echo $this->user->screen_name; ?>/statuses/<?php echo $this->id; ?>" data-datetime="<?php echo $this->created_at; ?>">
-                                <time pubdate="" class="dt-updated" datetime="<?php echo $this->created_at; ?>" title="Time posted: 20 Feb 2013, 16:04:28 (UTC)"><?php echo $this->created_at; ?></time>
+                                <time pubdate="" class="dt-updated" datetime="<?php echo $this->created_at; ?>" title="Time posted: 20 Feb 2013, 16:04:28 (UTC)"><?php echo $this->formatted_posted_datetime(); ?></time>
                             </a>
                         </div>
 
@@ -84,9 +97,6 @@ if (!class_exists('Tweet')) {
             </div>
 
             <?php
-
-            echo '<br/><br/>';
-            echo $text;
         }
     }
 }

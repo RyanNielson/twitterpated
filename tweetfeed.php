@@ -10,7 +10,25 @@ if (!class_exists('TweetFeed')) {
         }
 
         function render() {
-            
+            ?>
+
+            <div class="twitterpated-feed">
+
+            <?php
+
+            foreach ($this->tweets as $tweet) {
+                $tweet->render();
+            }
+
+            ?>
+
+            </div>
+
+            <?php
+        }
+
+        function add_tweet($tweet) {
+            $this->tweets[] = $tweet;
         }
     }
 }
