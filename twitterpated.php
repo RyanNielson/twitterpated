@@ -53,8 +53,8 @@ class Twitterpated {
     }
 
     public function add_stylesheets() {
-        wp_enqueue_style('twitterpated_timeline_style', 'http://platform.twitter.com/embed/timeline.css');
-        //wp_enqueue_style('twitterpated_style', plugins_url('stylesheets/twitterpated.css' , __FILE__));
+        //wp_enqueue_style('twitterpated_timeline_style', 'http://platform.twitter.com/embed/timeline.css');
+        wp_enqueue_style('twitterpated_style', plugins_url('stylesheets/twitterpated.css' , __FILE__));
     }
 
     public function ajax_get_timeline() {
