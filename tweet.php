@@ -75,7 +75,7 @@ if (!class_exists('Tweet')) {
         private function formatted_posted_datetime() {
             $date_str = $this->created_at;
             $timestamp = strtotime($date_str);
-            //return  date('j M y', $timestamp);
+
             return $this->twitter_date_convertor($timestamp);
         }
 

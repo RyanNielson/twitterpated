@@ -106,7 +106,7 @@ class Twitterpated {
         $role->add_cap("twitterpated_administer");
     }
 
-    public function get_timeline($screen_name, $count = 1, $echo = true) {
+    public function get_timeline($screen_name, $count = 1, $echo = false) {
         $handler = new TwitterHandler();
         
         $cache_key = "twitterpated_feed_" . $screen_name .  "_$count";
@@ -117,8 +117,10 @@ class Twitterpated {
         $contents = ob_get_contents();
         ob_end_clean();
 
-        if ($echo)
+        if ($echo) {
             echo $contents;
+            return true;
+        }
         else
             return $contents;
     }
@@ -131,18 +133,17 @@ class Twitterpated {
 
 
         if ($screen_name)
-            return $this->get_timeline($screen_name, $count, false);
+            return $this->get_timeline($screen_name, $count);
         else 
-            return 'Please include a screen name.';
-    
+            return '';
     }
 }
 
 new Twitterpated();
 
-function twitterpated_timeline($screen_name, $count = 1, $echo = true) {
+function twitterpated_timeline($screen_name, $count = 1, $echo = false) {
     $twitterpated = new Twitterpated();
-    $twitterpated->get_timeline($screen_name, $count, $echo);
+    return $twitterpated->get_timeline($screen_name, $count, $echo);
 }
 
 register_activation_hook(__FILE__, array('Twitterpated', 'on_activate'));
