@@ -8,7 +8,7 @@
  * Description: Adds the ability to render twitter feeds using oAuth.
  */
 
-require_once('TwitterHandler.php');
+require_once('twitterhandler.php');
 require_once('tweet.php');
 require_once('twitteruser.php');
 require_once('tweetfeed.php');
@@ -24,7 +24,7 @@ class Twitterpated {
         add_action('wp_enqueue_scripts', array($this, 'add_stylesheets'));
 
         add_action('wp_ajax_twitterpated_get_timeline', array($this, 'ajax_get_timeline'));
-        add_action('wp_ajax_nopriv_twitterpated_get_timeline', array($this, 'twitterpated_ajax_get_timeline'));
+        add_action('wp_ajax_nopriv_twitterpated_get_timeline', array($this, 'ajax_get_timeline'));
 
         add_shortcode('twitterpated', array($this, 'shortcode'));
     }
@@ -39,7 +39,7 @@ class Twitterpated {
     }
 
     public function settings() {
-        add_menu_page('Twitterpated Settings', 'Twitterpated Settings', 'manage_options', 'twitterpated_settings', array($this, 'settings_display'));
+        add_menu_page('Twitterpated Settings', 'Twitterpated Settings', 'twitterpated_manage_options', 'twitterpated_settings', array($this, 'settings_display'));
     }
 
     public function add_admin_javascripts() {
@@ -48,18 +48,19 @@ class Twitterpated {
     }
 
     public function add_javascripts() {
-        wp_enqueue_script('twitterpated_client_script', plugins_url('javascripts/twitterpated.client.js' , __FILE__));
+        wp_enqueue_script('twitterpated_client_script', plugins_url('javascripts/twitterpated.client.js' , __FILE__), array('jquery'));
         wp_enqueue_script('twitter_widget_script', 'http://platform.twitter.com/widgets.js'); // Already enqueued on EVERY page by NextGen :S 
     }
 
     public function add_stylesheets() {
         wp_enqueue_style('twitterpated_timeline_style', 'http://platform.twitter.com/embed/timeline.css');
-        wp_enqueue_style('twitterpated_style', plugins_url('stylesheets/twitterpated.css' , __FILE__));
+        //wp_enqueue_style('twitterpated_style', plugins_url('stylesheets/twitterpated.css' , __FILE__));
     }
 
     public function ajax_get_timeline() {
         $count = $_GET['count'];
-        echo trim(stripslashes(json_encode(twitterpated_get_timeline($count))), '"');
+        $screen_name = $_GET['screen_name'];
+        twitterpated_timeline($screen_name, $count, true);
         die();
     }
 
@@ -90,10 +91,12 @@ class Twitterpated {
             </form>
 
             <?php
-            if (get_option('twitterpated_consumer_key') && get_option('twitterpated_consumer_secret')) {
-                $handler = new TwitterHandler();
-                $handler->authorize();
-            }
+                if (current_user_can('twitterpated_manage_options')) {
+                    if (get_option('twitterpated_consumer_key') && get_option('twitterpated_consumer_secret')) {
+                        $handler = new TwitterHandler();
+                        $handler->authorize();
+                    }
+                }
             ?>
 
         </div>
@@ -104,6 +107,14 @@ class Twitterpated {
     public function on_activate() {
         $role = get_role('administrator');
         $role->add_cap("twitterpated_administer");
+        $role->add_cap("twitterpated_manage_options");
+
+        $role = get_role('site_administrator');
+        if ($role)
+            $role->add_cap("twitterpated_manage_options");
+        $role = get_role('site_admin');
+        if ($role)
+            $role->add_cap("twitterpated_manage_options");
     }
 
     public function get_timeline($screen_name, $count = 1, $echo = false) {
@@ -128,7 +139,7 @@ class Twitterpated {
     public function shortcode($atts) {
         extract(shortcode_atts(array(
             'count' => 1,
-            'screen_name' => false,
+            'screen_name' => false
         ), $atts));
 
 
