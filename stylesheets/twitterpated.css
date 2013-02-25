@@ -107,8 +107,7 @@
 .twitterpated-feed .verified, .twitterpated-feed .ic-rt, .twitterpated-feed .ic-mask, .twitterpated-feed .ic-top, .twitterpated-feed .timeline-header .ic-twitter-badge, .twitterpated-feed .ic-bird-flourish {
   display: inline-block;
   vertical-align: middle;
-  background: transparent url(../images/sprite.png) no-repeat 0 0;
-  background-image: url(../images/sprite.png);
+  background: transparent url(http://platform.twitter.com/images/sprite.png) no-repeat 0 0;
   background-size: 177px 191px;
 }
 .twitterpated-feed .verified {
@@ -991,3 +990,32 @@
 .twitterpated-feed .footer {
   border: none;
 }
+
+.twitterpated-feed .feed-header {
+  float:left;
+  width: 100%;
+}
+
+.twitterpated-feed .feed-header img {
+  float: left;
+  width: 48px;
+  height: 48px;
+}
+.twitterpated-feed .feed-header h3 {
+  float: left;
+  font-size: 18px;
+  line-height: 48px;
+  font-weight: 700;
+  font-family: "open sans", helvetica, arial, sans-serif;
+}
+
+.twitterpated-feed .feed-header a:hover h3 {
+  color: #027988;
+}
+
+.twitterpated-feed ol.h-feed {
+  float: left;
+}
+
+
+

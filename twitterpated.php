@@ -117,14 +117,14 @@ class Twitterpated {
             $role->add_cap("twitterpated_manage_options");
     }
 
-    public function get_timeline($screen_name, $count = 1, $echo = false) {
+    public function get_timeline($screen_name, $count = 1, $echo = false, $bird_colour = 'light') {
         $handler = new TwitterHandler();
         
         $cache_key = "twitterpated_feed_" . $screen_name .  "_$count";
         $parameters = array('screen_name' => $screen_name, 'count' => $count);
         
         ob_start();
-        $handler->user_timeline($cache_key, $parameters);
+        $handler->user_timeline($cache_key, $parameters, $echo, $bird_colour);
         $contents = ob_get_contents();
         ob_end_clean();
 
@@ -139,12 +139,13 @@ class Twitterpated {
     public function shortcode($atts) {
         extract(shortcode_atts(array(
             'count' => 1,
-            'screen_name' => false
+            'screen_name' => false,
+            'bird_colour' => 'light'
         ), $atts));
 
 
         if ($screen_name)
-            return $this->get_timeline($screen_name, $count);
+            return $this->get_timeline($screen_name, $count, false, $bird_colour);
         else 
             return '';
     }
@@ -152,9 +153,9 @@ class Twitterpated {
 
 new Twitterpated();
 
-function twitterpated_timeline($screen_name, $count = 1, $echo = false) {
+function twitterpated_timeline($screen_name, $count = 1, $echo = false, $bird_colour = 'light') {
     $twitterpated = new Twitterpated();
-    return $twitterpated->get_timeline($screen_name, $count, $echo);
+    return $twitterpated->get_timeline($screen_name, $count, $echo, $bird_colour);
 }
 
 register_activation_hook(__FILE__, array('Twitterpated', 'on_activate'));

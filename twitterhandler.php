@@ -21,13 +21,17 @@ if (!class_exists('TwitterHandler')) {
         }
 
         function check_credentials() {
-            $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $this->access_token['oauth_token'], $this->access_token['oauth_token_secret']);
-            $content = $connection->get('account/verify_credentials');
-            if (empty($content) || $content->error) {
-                return false;
+            if ($this->consumer_key && $this->consumer_secret && isset($this->access_token) && $this->access_token['oauth_token'] && $this->access_token['oauth_token_secret']) {
+                $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $this->access_token['oauth_token'], $this->access_token['oauth_token_secret']);
+                $content = $connection->get('account/verify_credentials');
+                if (empty($content) || $content->error) {
+                    return false;
+                }
+
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         function authorize() {
@@ -130,90 +134,90 @@ if (!class_exists('TwitterHandler')) {
                     $content = $connection->get($endpoint, $parameters);
                 }
                 else
-                    echo 'CREDENTIALS NO GOOD';
+                    echo false;
             }
 
             return $content;
         }
 
-        function user_timeline($cache_key, $parameters=array(), $echo=false) {
+        function user_timeline($cache_key, $parameters=array(), $echo=false, $bird_colour = 'light') {
             $tweet_feed = $this->get_cache_value($cache_key);
             if ($tweet_feed === false) {
                 $tweets = $this->get('statuses/user_timeline', $cache_key . '_json', $parameters);
-                $content = '';
-
-                $tweet_feed = new TweetFeed();
-                foreach ($tweets as $tweet) {
-                    if ($tweet->retweeted_status && isset($tweet->retweeted_status)) {
-                        $tweetthing = new Tweet(
-                            array(
-                                'id' => $tweet->retweeted_status->id_str,
-                                'text' => $tweet->retweeted_status->text,
-                                'created_at' => $tweet->retweeted_status->created_at,
-                                'entities' => $tweet->retweeted_status->entities,
-                                'retweet' => true,
-                                'retweeting_user' => new TwitterUser(
-                                    array(
-                                        'id' => $tweet->user->id_str,
-                                        'name' => $tweet->user->name,
-                                        'screen_name' => $tweet->user->screen_name,
-                                        'profile_url' => 'http://twitter.com/' . $tweet->user->screen_name,
-                                        'profile_image_url' => $tweet->user->profile_image_url,
-                                        'following' => $tweet->user->following,
-                                        'follow_request_sent' => $tweet->user->follow_request_sent
-                                    )
-                                ),
-                                'user' => new TwitterUser(
-                                    array(
-                                        'id' => $tweet->retweeted_status->user->id_str,
-                                        'name' => $tweet->retweeted_status->user->name,
-                                        'screen_name' => $tweet->retweeted_status->user->screen_name,
-                                        'profile_url' => 'http://twitter.com/' . $tweet->retweeted_status->user->screen_name,
-                                        'profile_image_url' => $tweet->retweeted_status->user->profile_image_url,
-                                        'following' => $tweet->retweeted_status->user->following,
-                                        'follow_request_sent' => $tweet->retweeted_status->user->follow_request_sent
-                                    )
-                                )
-                            )
-                        );
-
-                        $tweet_feed->add_tweet($tweetthing);
-                    }
-                    else {
-                        $tweetthing = new Tweet(
-                            array(
-                                'id' => $tweet->id_str,
-                                'text' => $tweet->text,
-                                'created_at' => $tweet->created_at,
-                                'entities' => $tweet->entities,
-                                'retweet' => false,
-                                'user' => new TwitterUser(
-                                    array(
-                                        'id' => $tweet->user->id_str,
-                                        'name' => $tweet->user->name,
-                                        'screen_name' => $tweet->user->screen_name,
-                                        'profile_url' => 'http://twitter.com/' . $tweet->user->screen_name,
-                                        'profile_image_url' => $tweet->user->profile_image_url,
-                                        'following' => $tweet->user->following,
-                                        'follow_request_sent' => $tweet->user->follow_request_sent
+                
+                if ($tweets) {
+                    $tweet_feed = new TweetFeed($parameters['screen_name']);
+                    foreach ($tweets as $tweet) {
+                        if ($tweet->retweeted_status && isset($tweet->retweeted_status)) {
+                            $tweetthing = new Tweet(
+                                array(
+                                    'id' => $tweet->retweeted_status->id_str,
+                                    'text' => $tweet->retweeted_status->text,
+                                    'created_at' => $tweet->retweeted_status->created_at,
+                                    'entities' => $tweet->retweeted_status->entities,
+                                    'retweet' => true,
+                                    'retweeting_user' => new TwitterUser(
+                                        array(
+                                            'id' => $tweet->user->id_str,
+                                            'name' => $tweet->user->name,
+                                            'screen_name' => $tweet->user->screen_name,
+                                            'profile_url' => 'http://twitter.com/' . $tweet->user->screen_name,
+                                            'profile_image_url' => $tweet->user->profile_image_url,
+                                            'following' => $tweet->user->following,
+                                            'follow_request_sent' => $tweet->user->follow_request_sent
+                                        )
+                                    ),
+                                    'user' => new TwitterUser(
+                                        array(
+                                            'id' => $tweet->retweeted_status->user->id_str,
+                                            'name' => $tweet->retweeted_status->user->name,
+                                            'screen_name' => $tweet->retweeted_status->user->screen_name,
+                                            'profile_url' => 'http://twitter.com/' . $tweet->retweeted_status->user->screen_name,
+                                            'profile_image_url' => $tweet->retweeted_status->user->profile_image_url,
+                                            'following' => $tweet->retweeted_status->user->following,
+                                            'follow_request_sent' => $tweet->retweeted_status->user->follow_request_sent
+                                        )
                                     )
                                 )
-                            )
-                        );
+                            );
 
-                        $tweet_feed->add_tweet($tweetthing);
+                            $tweet_feed->add_tweet($tweetthing);
+                        }
+                        else {
+                            $tweetthing = new Tweet(
+                                array(
+                                    'id' => $tweet->id_str,
+                                    'text' => $tweet->text,
+                                    'created_at' => $tweet->created_at,
+                                    'entities' => $tweet->entities,
+                                    'retweet' => false,
+                                    'user' => new TwitterUser(
+                                        array(
+                                            'id' => $tweet->user->id_str,
+                                            'name' => $tweet->user->name,
+                                            'screen_name' => $tweet->user->screen_name,
+                                            'profile_url' => 'http://twitter.com/' . $tweet->user->screen_name,
+                                            'profile_image_url' => $tweet->user->profile_image_url,
+                                            'following' => $tweet->user->following,
+                                            'follow_request_sent' => $tweet->user->follow_request_sent
+                                        )
+                                    )
+                                )
+                            );
+
+                            $tweet_feed->add_tweet($tweetthing);
+                        }
                     }
-                }
-
-                $this->save_cache_value($cache_key, serialize($tweet_feed));
+                    $this->save_cache_value($cache_key, serialize($tweet_feed));
+                    $tweet_feed->render($bird_colour);
+                }    
             }
             else {
                 $tweet_feed = unserialize($tweet_feed);
+                $tweet_feed->render($bird_colour);
             }
 
-            $tweet_feed->render();
-
-            return $content;
+            //$tweet_feed->render($bird_colour);
         }
 
         function signout() {
