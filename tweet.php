@@ -29,6 +29,7 @@ if (!class_exists('Tweet')) {
             $text = $this->replace_hashtags($this->text);
             $text = $this->replace_mentions($text);
             $text = $this->replace_urls($text);
+            $text = $this->replace_media($text);
             return $text;
         }
 
@@ -61,11 +62,25 @@ if (!class_exists('Tweet')) {
             foreach ($this->entities->urls as $url) {
                 if (!in_array($url->url, $replaced_urls)) {
                     $replaced_users[] = $url->url;
-                    //$text = str_replace($url->url, );
 
                     $replacement_text = '<a href="' . $url->url . '"dir="ltr" data-expanded-url="' . $url->expanded_url . '" class="link customisable" target="_blank" title="' . $url->expanded_url . '">' . $url->url . '</a>';
                     $text = str_replace($url->url, $replacement_text, $text);
-                    //$text = preg_replace('/@' . $user_mention->screen_name . '\b/', '<a href="https://twitter.com/intent/user?screen_name=' . $user_mention->screen_name . '" class="profile customisable h-card" dir="ltr">@<b class="p-nickname">' . $user_mention->screen_name . '</b></a>', $text);
+                }
+            }
+
+
+
+            return $text;
+        }
+
+        private function replace_media($text) {
+            $replaced_media = array();
+            foreach ($this->entities->media as $media) {
+                if (!in_array($media->url, $replaced_media)) {
+                    $replaced_media[] = $url->url;
+
+                    $replacement_text = '<a href="' . $media->url . '"dir="ltr" data-expanded-url="' . $media->expanded_url . '" class="link customisable" target="_blank" title="' . $media->expanded_url . '">' . $media->url . '</a>';
+                    $text = str_replace($media->url, $replacement_text, $text);
                 }
             }
 
