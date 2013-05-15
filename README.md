@@ -1,1 +1,1 @@
-read meeee???????? hi
+A simple Tweet feed for Wordpress using the v1.1 API.
