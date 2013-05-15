@@ -50,7 +50,7 @@ if (!class_exists('Tweet')) {
             foreach ($this->entities->user_mentions as $user_mention) {
                 if (!in_array($user_mention->screen_name, $replaced_users)) {
                     $replaced_users[] = $user_mention->screen_name;
-                    $text = preg_replace('/@' . $user_mention->screen_name . '\b/', '<a href="https://twitter.com/intent/user?screen_name=' . $user_mention->screen_name . '" class="profile customisable h-card" dir="ltr">@<b class="p-nickname">' . $user_mention->screen_name . '</b></a>', $text);
+                    $text = preg_replace('/@' . $user_mention->screen_name . '\b/i', '<a href="https://twitter.com/intent/user?screen_name=' . $user_mention->screen_name . '" class="profile customisable h-card" dir="ltr">@<b class="p-nickname">' . $user_mention->screen_name . '</b></a>', $text);
                 }
             }
 
