@@ -22,6 +22,12 @@
         }
 
         $('#twitter-sign-in-btn').click(function(){
+            var admin_ajax = 'wp-admin/admin-ajax.php';
+            var data = {
+                action: 'twitterpated_signin'
+            };
+            
+            console.log(admin_ajax);
             $.popupcallback({
                 path: $(this).attr('href'),
                 callback: function(){

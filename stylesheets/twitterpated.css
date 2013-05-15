@@ -1,0 +1,1021 @@
+/* Twitter CSS */
+.twitterpated-feed html, .twitterpated-feed body, .twitterpated-feed h1, .twitterpated-feed h2, .twitterpated-feed h3, .twitterpated-feed blockquote, .twitterpated-feed p, .twitterpated-feed ol, .twitterpated-feed ul, .twitterpated-feed li, .twitterpated-feed img, .twitterpated-feed iframe, .twitterpated-feed button {
+  padding: 0;
+  margin: 0;
+  font: normal normal normal 12px/16px "Helvetica Neue", Arial, sans-serif;
+  text-decoration: none;
+  -webkit-text-size-adjust: 100%;
+  text-transform: none;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+  -webkit-outline: 0;
+  -moz-outline: 0;
+  -ms-outline: 0;
+  -o-outline: 0;
+  outline: 0;
+}
+.twitterpated-feed b, .twitterpated-feed i {
+  font-style: normal;
+  font-weight: normal;
+}
+.twitterpated-feed abbr {
+  border-bottom: 0;
+}
+.twitterpated-feed .p-author::before, .twitterpated-feed .p-author::after, .twitterpated-feed .cards-base::before, .twitterpated-feed .cards-base::after {
+  display: table;
+  content: "";
+}
+.twitterpated-feed .p-author::after, .twitterpated-feed .cards-base::after {
+  clear: both;
+}
+.twitterpated-feed .tweet, .twitterpated-feed .root, .twitterpated-feed .p-author {
+  zoom: 1;
+}
+.twitterpated-feed .root, .twitterpated-feed .tweet, .twitterpated-feed .footer, .twitterpated-feed .detail-expander, .twitterpated-feed .header, .twitterpated-feed .timeline {
+  position: relative;
+}
+.twitterpated-feed button.load-more, .twitterpated-feed .tweet-box-button, .twitterpated-feed .no-tweets-pane .load-tweets {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.twitterpated-feed .no-tweets-pane p {
+  font-size: 20px;
+  line-height: 24px;
+}
+.twitterpated-feed .timeline-header h1.summary {
+  font-size: 18px;
+  line-height: 18px;
+}
+.twitterpated-feed .timeline .e-entry-title, .twitterpated-feed .p-author .p-name, .twitterpated-feed .cards-base h3, .twitterpated-feed .new-tweets-bar button, .twitterpated-feed .load-tweets, .twitterpated-feed .no-more-pane {
+  font-size: 14px;
+  line-height: 16px;
+}
+.twitterpated-feed .tweet-box-button {
+  font-size: 13px;
+}
+.twitterpated-feed .stats strong, .twitterpated-feed .timeline-header- .byline, .twitterpated-feed .timeline-header .list-description {
+  font-size: 12px;
+  line-height: 18px;
+}
+.twitterpated-feed .timeline-header .byline {
+  margin-top: 4px;
+}
+.twitterpated-feed .stats span {
+  font-size: 10px;
+}
+.twitterpated-feed .p-author a, .twitterpated-feed .e-entry-title, .twitterpated-feed .cards-base h3, .twitterpated-feed .cards-base .cards-content p {
+  line-height: 18px;
+}
+.twitterpated-feed .e-entry-title a {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.twitterpated-feed a, .twitterpated-feed a:visited, .twitterpated-feed a:active, .twitterpated-feed a:hover, .twitterpated-feed a:focus, .twitterpated-feed .p-author .full-name, .twitterpated-feed .p-author a.profile, .twitterpated-feed .p-author a.profile:hover .p-nickname, .twitterpated-feed .p-author a.profile:focus .p-nickname, .twitterpated-feed .p-author a.profile:hover .p-nickname b, .twitterpated-feed .p-author a.profile:focus .p-nickname b, .twitterpated-feed .cards-base a.profile:hover .p-nickname, .twitterpated-feed .cards-base a.profile:focus .p-nickname, .twitterpated-feed .cards-base a.profile:hover .p-nickname b, .twitterpated-feed .cards-base a.profile:focus .p-nickname b, .twitterpated-feed .cards-base .byline-user .p-nickname {
+  text-decoration: none;
+}
+.twitterpated-feed a:hover b, .twitterpated-feed a:focus b, .twitterpated-feed a:hover span, .twitterpated-feed a:focus span, .twitterpated-feed h3 a:hover, .twitterpated-feed h3 a:focus, .twitterpated-feed .timeline-header a:hover, .twitterpated-feed .timeline-header a:focus, .twitterpated-feed .e-entry-title .link:hover, .twitterpated-feed .e-entry-title .link:focus, .twitterpated-feed .footer a.expand:hover, .twitterpated-feed a.permalink:hover, .twitterpated-feed a.permalink:focus, .twitterpated-feed a.long-permalink:hover, .twitterpated-feed a.long-permalink:focus, .twitterpated-feed .cards-base p a:hover, .twitterpated-feed .cards-base p a:focus, .twitterpated-feed .retweet-credit a:hover, .twitterpated-feed .retweet-credit a:focus {
+  text-decoration: underline;
+}
+.twitterpated-feed html, .twitterpated-feed .p-author .profile .p-name, .twitterpated-feed .cards-base p, .twitterpated-feed .cards-base p a, .twitterpated-feed .timeline-header .summary, .twitterpated-feed .timeline-header .summary a:link, .twitterpated-feed .timeline-header .summary a:visited, .twitterpated-feed .p-author a.profile:hover .p-name, .twitterpated-feed .p-author a.profile:focus .p-name {
+  color: #333;
+}
+.twitterpated-feed .customisable, .twitterpated-feed .customisable:link, .twitterpated-feed .customisable:visited, .twitterpated-feed .customisable:hover, .twitterpated-feed .customisable:active, .twitterpated-feed .customisable-highlight:hover, .twitterpated-feed a:hover .customisable-highlight, .twitterpated-feed a:focus .customisable-highlight {
+  color: #0084b4;
+}
+.twitterpated-feed a:link, .twitterpated-feed a:visited, .twitterpated-feed .stats span, .twitterpated-feed .byline, .twitterpated-feed .retweet-credit, .twitterpated-feed .no-more-pane, .twitterpated-feed .no-tweets-pane p, .twitterpated-feed .p-geo, .twitterpated-feed .cards-base .byline-user {
+  color: #999;
+}
+.twitterpated-feed a:hover, .twitterpated-feed a:active, .twitterpated-feed .p-author a.profile:hover, .twitterpated-feed .p-author a.profile:focus, .twitterpated-feed .retweet-credit .profile:hover, .twitterpated-feed .retweet-credit .profile:focus, .twitterpated-feed .stats strong, .twitterpated-feed .no-tweets-pane .load-tweets, .twitterpated-feed .nsfw {
+  color: #666;
+}
+.twitterpated-feed .tweet-box-button {
+  color: #aaa;
+}
+.twitterpated-feed .verified b, .twitterpated-feed .tweet-actions b, .twitterpated-feed abbr.p-geo b, .twitterpated-feed .timeline-header .ic-twitter-badge b, .twitterpated-feed .e-entry-title a .tco-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip: rect(0, 0, 0, 0);
+  clip: rect(0 0 0 0);
+}
+.twitterpated-feed .verified, .twitterpated-feed .ic-rt, .twitterpated-feed .ic-mask, .twitterpated-feed .ic-top, .twitterpated-feed .timeline-header .ic-twitter-badge, .twitterpated-feed .ic-bird-flourish {
+  display: inline-block;
+  vertical-align: middle;
+  background: transparent url(http://platform.twitter.com/images/sprite.png) no-repeat 0 0;
+  background-size: 177px 191px;
+}
+.twitterpated-feed .verified {
+  width: 15px;
+  height: 17px;
+  vertical-align: -25%;
+  background-position: 0 -161px;
+}
+.twitterpated-feed .timeline-header .ic-twitter-badge {
+  width: 18px;
+  height: 18px;
+}
+.twitterpated-feed .ic-top {
+  display: inline-block;
+  width: 12px;
+  height: 10px;
+  margin: 2px 4px 0 0;
+  vertical-align: top;
+  background-position: 0 -181px;
+}
+.twitterpated-feed .ic-bird-flourish {
+  display: block;
+  width: 32px;
+  height: 20px;
+  margin: 12px auto 0;
+  background-position: -16px 0;
+}
+.twitterpated-feed .ic-mask {
+  width: 12px;
+  height: 13px;
+  background-color: #999;
+}
+.twitterpated-feed a:hover .ic-mask, .twitterpated-feed a:focus .ic-mask {
+  background-color: #0084b4;
+}
+.twitterpated-feed .ic-reply {
+  width: 19px;
+  height: 15px;
+  background-position: 0 -87px;
+}
+.twitterpated-feed .ic-retweet {
+  width: 22px;
+  height: 15px;
+  background-position: -31px -87px;
+}
+.twitterpated-feed .ic-fav {
+  width: 16px;
+  height: 15px;
+  background-position: -60px -87px;
+}
+.twitterpated-feed .ic-geo, .twitterpated-feed .ic-pho, .twitterpated-feed .ic-sum, .twitterpated-feed .ic-pla, .twitterpated-feed .ic-con {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+.twitterpated-feed .ic-geo {
+  background-position: -100px -29px;
+}
+.twitterpated-feed .ic-pho {
+  background-position: -60px -29px;
+}
+.twitterpated-feed .ic-sum {
+  background-position: -120px -29px;
+}
+.twitterpated-feed .ic-pla {
+  background-position: -80px -29px;
+}
+.twitterpated-feed .ic-con {
+  background-position: -140px -29px;
+}
+.twitterpated-feed .ic-rt {
+  width: 18px;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: top;
+  background-position: -60px -141px;
+}
+.twitterpated-feed .timeline {
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.twitterpated-feed .timeline .stream {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.twitterpated-feed .timeline.pending-scroll-in .stream .h-feed {
+  -webkit-transition: margin-top .5s ease-out;
+  -moz-transition: margin-top .5s ease-out;
+  -ms-transition: margin-top .5s ease-out;
+  -o-transition: margin-top .5s ease-out;
+  transition: margin-top .5s ease-out;
+}
+.twitterpated-feed .timeline-header, .twitterpated-feed .timeline-footer {
+  position: relative;
+  z-index: 100;
+}
+.twitterpated-feed .timeline-header {
+  padding: 12px;
+  border-bottom: 1px solid #e8e8e8;
+  border-color: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 0 -3px rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 0 0 -3px rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 -3px rgba(0, 0, 0, 0);
+  -webkit-transition: -webkit-box-shadow .3s ease-out;
+  -moz-transition: -moz-box-shadow .3s ease-out;
+  -ms-transition: box-shadow .3s ease-out;
+  -o-transition: box-shadow .3s ease-out;
+  transition: box-shadow .3s ease-out;
+}
+.twitterpated-feed .scrolled-down .timeline-header {
+  -webkit-box-shadow: 0 0 10px -3px #cccccc;
+  -moz-box-shadow: 0 0 10px -3px #cccccc;
+  box-shadow: 0 0 10px -3px #cccccc;
+}
+.twitterpated-feed .timeline-header h1.summary {
+  font-weight: bold;
+}
+.twitterpated-feed .timeline-header .list-description {
+  font-family: Georgia,Palatino,serif;
+  font-style: italic;
+}
+.twitterpated-feed .timeline-header .twitter-follow-button, .twitterpated-feed .timeline-header .ic-twitter-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.twitterpated-feed .new-tweets-bar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
+  width: auto;
+  margin-top: -2px;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease-in;
+  -moz-transition: opacity .3s ease-in;
+  -o-transition: opacity .3s ease-in;
+  transition: opacity .3s ease-in;
+}
+.twitterpated-feed .pending-new-tweet .new-tweets-bar, .twitterpated-feed .show-new-tweet .new-tweets-bar {
+  display: block;
+}
+.twitterpated-feed .show-new-tweet .new-tweets-bar {
+  opacity: .9;
+}
+.twitterpated-feed .new-tweets-bar button {
+  width: 100%;
+  _width: 92%;
+  padding: 10px 0;
+  color: #fff;
+  text-align: center;
+  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.13);
+  border-width: 0;
+}
+.twitterpated-feed .new-tweets-bar button:hover, .twitterpated-feed .new-tweets-bar button:focus {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.twitterpated-feed button.load-more {
+  display: block;
+  width: 100%;
+  *width: 92%;
+  padding: 10px 0;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  background-color: #fcfcfc;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 0;
+  -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.05);
+  -webkit-transition: background-color .2s ease-out;
+  -moz-transition: background-color .2s ease-out;
+  -ms-transition: background-color .2s ease-out;
+  -o-transition: background-color .2s ease-out;
+  transition: background-color .2s ease-out;
+}
+.twitterpated-feed button.load-more:hover, .twitterpated-feed button.load-more:focus {
+  text-decoration: underline;
+  background-color: #eee;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.twitterpated-feed .no-more-pane {
+  display: none;
+  padding: 12px;
+  text-align: center;
+}
+.twitterpated-feed .empty-timeline button.load-more, .twitterpated-feed .no-more button.load-more {
+  display: none;
+}
+.twitterpated-feed .no-more .no-more-pane {
+  display: block;
+}
+.twitterpated-feed .no-tweets-pane {
+  margin: 30px 0;
+  text-align: center;
+}
+.twitterpated-feed .no-tweets-pane p {
+  margin: 24px 12px;
+  font-weight: 200;
+  text-align: center;
+}
+.twitterpated-feed .nsfw .display-sensitive-image, .twitterpated-feed .no-tweets-pane .load-tweets {
+  padding: 5px 10px;
+  margin: 5px auto;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  background-color: #dedede;
+  background-color: rgba(0, 0, 0, 0.15);
+  background-image: -moz-linear-gradient(white, #dddddd);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #dddddd));
+  background-image: -o-linear-gradient(white, #dddddd);
+  background-image: linear-gradient(#ffffff, #dddddd);
+  border: 1px solid #ccc;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.twitterpated-feed .nsfw .display-sensitive-image:hover, .twitterpated-feed .nsfw .display-sensitive-image:focus, .twitterpated-feed .nsfw .display-sensitive-image:active, .twitterpated-feed .no-tweets-pane .load-tweets:hover, .twitterpated-feed .no-tweets-pane .load-tweets:focus, .twitterpated-feed .no-tweets-pane .load-tweets:active {
+  background-color: #f8f8f8;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15));
+  border-color: #bbb;
+  border-color: rgba(0, 0, 0, 0.27);
+}
+.twitterpated-feed .nsfw .display-sensitive-image:active, .twitterpated-feed .no-tweets-pane .load-tweets:active {
+  background-color: #efefef;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+.twitterpated-feed .has-tweets .no-tweets-pane {
+  display: none;
+}
+.twitterpated-feed .timeline-footer {
+  padding: 6px 10px;
+  background: #e8e8e8;
+  background: rgba(0, 0, 0, 0.1);
+}
+.twitterpated-feed .timeline-footer a.widget-link {
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+.twitterpated-feed .tweet-box-button {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  text-align: left;
+  background: #fff;
+  border: 1px #ccc solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.twitterpated-feed .tweet-box-button:hover, .twitterpated-feed .tweet-box-button:focus {
+  cursor: pointer;
+  border-color: #999;
+  border-color: rgba(0, 0, 0, 0.4);
+}
+.twitterpated-feed a.tweet-box-button {
+  width: auto;
+}
+.twitterpated-feed .twitter-tweet-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
+  background: #e8e8e8;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 4px 4px;
+}
+.twitterpated-feed .show-tweet-box .twitter-tweet-box {
+  display: block;
+}
+.twitterpated-feed .tweet {
+  padding: 12px 12px 10px 69px;
+  border-bottom: 1px solid #e8e8e8;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.twitterpated-feed .tweet.with-expansion {
+  cursor: pointer;
+}
+.twitterpated-feed .header {
+  _float: left;
+  _clear: left;
+}
+.twitterpated-feed .header .avatar {
+  position: absolute;
+  top: 0;
+  left: -57px;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 4px;
+}
+.twitterpated-feed .permalink {
+  position: relative;
+  z-index: 50;
+  float: right;
+  margin-top: 2px;
+  _clear: right;
+}
+.twitterpated-feed .p-author .profile .p-name, .twitterpated-feed .cards-base .profile .p-name {
+  font-weight: bold;
+}
+.twitterpated-feed .tweet .e-entry-title {
+  margin: 0 5px 0 0;
+  overflow: hidden;
+  clear: both;
+  word-wrap: break-word;
+}
+.twitterpated-feed .inline-media {
+  max-width: 100%;
+  margin: 10px 0 0;
+  overflow: hidden;
+}
+.twitterpated-feed .inline-media img {
+  max-width: 100%;
+}
+.twitterpated-feed .tweet .retweet-credit {
+  margin: 3px 0;
+}
+.twitterpated-feed .footer {
+  overflow: hidden;
+  zoom: 1;
+}
+.twitterpated-feed .tweet-actions {
+  position: absolute;
+  _position: static;
+  right: 0;
+  bottom: 0;
+  _float: right;
+  background: #fff;
+  visibility: hidden;
+  _visibility: visible;
+  -webkit-box-shadow: 0 0 10px 5px #fff;
+  -moz-box-shadow: 0 0 10px 5px #fff;
+  box-shadow: 0 0 10px 5px #fff;
+}
+.twitterpated-feed .tweet-actions li {
+  _display: inline;
+  float: left;
+}
+.twitterpated-feed .tweet-actions a i {
+  margin: 1px 0 0 8px;
+  *margin: 1px 0 0 3px;
+  overflow: hidden;
+}
+.twitterpated-feed .tweet:hover .tweet-actions, .twitterpated-feed .tweet:focus .tweet-actions, .twitterpated-feed .expanded .tweet-actions {
+  visibility: visible;
+}
+.twitterpated-feed .tweet .tweet-actions a, .twitterpated-feed .tweet .tweet-actions a b, .twitterpated-feed .tweet .tweet-actions a i, .twitterpated-feed .tweet .tweet-actions li {
+  cursor: pointer;
+  outline: 0;
+}
+.twitterpated-feed .twt-tweet .tweet-actions .ic-retweet {
+  margin-top: 1px;
+}
+.twitterpated-feed .footer {
+  min-height: 16px;
+  margin-top: 2px;
+  overflow: hidden;
+  border-top: 1px solid transparent;
+  _border-color: pink;
+  _filter: chroma(color=pink);
+  -webkit-transition: margin-top 0.2s ease-out, padding-top 0.2s ease-out, border-color 0.2s ease-out;
+  -moz-transition: margin-top 0.2s ease-out, padding-top 0.2s ease-out, border-color 0.2s ease-out;
+  -ms-transition: margin-top 0.2s ease-out, padding-top 0.2s ease-out, border-color 0.2s ease-out;
+  -o-transition: margin-top 0.2s ease-out, padding-top 0.2s ease-out, border-color 0.2s ease-out;
+  transition: margin-top 0.2s ease-out, padding-top 0.2s ease-out, border-color 0.2s ease-out;
+}
+.twitterpated-feed .expanded .footer {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-color: #e8e8e8;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.twitterpated-feed .expand, .twitterpated-feed .p-geo {
+  _display: inline;
+  float: left;
+}
+.twitterpated-feed .stats-wide, .twitterpated-feed .stats-narrow {
+  display: none;
+  margin-left: .3em;
+}
+.twitterpated-feed .expanded .stats-wide {
+  display: inline-block;
+  margin-top: -2px;
+}
+.twitterpated-feed .stats span {
+  display: inline-block;
+  margin-right: 3px;
+  text-transform: uppercase;
+}
+.twitterpated-feed .stats strong {
+  font-weight: bold;
+}
+.twitterpated-feed .detail-expander {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height .3s ease-in;
+  -moz-transition: height .3s ease-in;
+  -ms-transition: height .3s ease-in;
+  -o-transition: height .3s ease-in;
+  transition: height .3s ease-in;
+}
+.twitterpated-feed .detail-expander .detail-content {
+  _display: none;
+}
+.twitterpated-feed .expanded .detail-expander .detail-content {
+  _display: block;
+}
+.twitterpated-feed .cards-base {
+  padding: 12px 0;
+  border-top: 1px solid transparent;
+  _border-top-color: pink;
+  _filter: chroma(color=pink);
+  -webkit-transition: margin-top .3s ease-out,border-color .2s ease-out;
+  -moz-transition: margin-top .3s ease-out,border-color .2s ease-out;
+  -ms-transition: margin-top .3s ease-out,border-color .2s ease-out;
+  -o-transition: margin-top .3s ease-out,border-color .2s ease-out;
+  transition: margin-top .3s ease-out,border-color .2s ease-out;
+}
+.twitterpated-feed .expanded .cards-base {
+  margin-top: 12px;
+  border-color: #e8e8e8;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.twitterpated-feed .cards-multimedia {
+  padding-top: 0;
+  border-top: 0;
+}
+.twitterpated-feed .cards-base h3 {
+  margin: 0 0 4px 0;
+  font-weight: bold;
+}
+.twitterpated-feed .cards-base .cards-content p {
+  margin: 5px 0 10px;
+}
+.twitterpated-feed .cards-multimedia .cards-content-concise .byline {
+  margin-bottom: 8px;
+}
+.twitterpated-feed .cards-base .summary-thumbnail {
+  float: right;
+  max-width: 120px;
+  max-height: 120px;
+  margin: 4px 0 0 15px;
+}
+.twitterpated-feed .cards-base .media {
+  margin: 0 0 8px;
+}
+.twitterpated-feed .cards-multimedia img {
+  max-width: 100%;
+  max-height: 375px;
+}
+.twitterpated-feed .cards-base .source-user {
+  position: relative;
+  height: 16px;
+  padding-left: 21px;
+  margin: 10px 0;
+  line-height: 16px;
+}
+.twitterpated-feed .cards-base .source-user .avatar {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+.twitterpated-feed .nsfw {
+  padding: 8px;
+  background-color: #fcfcfc;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+.twitterpated-feed .standalone-tweet {
+  padding: 8px 8px 0;
+  background: #fff;
+  border-radius: 5px;
+}
+.twitterpated-feed .standalone-tweet .subject {
+  margin-top: 4px;
+}
+.twitterpated-feed .standalone-tweet .subject {
+  padding: 4px 8px 8px;
+  border: 0;
+}
+.twitterpated-feed .standalone-tweet .subject .header {
+  position: relative;
+  _height: 48px;
+  min-height: 48px;
+  padding: 3px 0 4px 57px;
+}
+.twitterpated-feed .standalone-tweet .expanded .footer {
+  margin-top: 5px;
+}
+.twitterpated-feed .standalone-tweet .reply {
+  padding: 8px 8px 8px 65px;
+}
+.twitterpated-feed .standalone-tweet .subject .header .avatar {
+  left: 0;
+}
+.twitterpated-feed .standalone-tweet .subject .header .profile .p-name {
+  font-size: 16px;
+}
+.twitterpated-feed .standalone-tweet .subject .header .profile .p-nickname {
+  font-size: 14px;
+}
+.twitterpated-feed .standalone-tweet .subject .header .profile .p-nickname::before {
+  white-space: pre;
+  content: "\A";
+}
+.twitterpated-feed .standalone-tweet .twitter-follow-button {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+}
+.twitterpated-feed .standalone-tweet .subject .e-entry-title {
+  font: 18px/24px Georgia, "Times New Roman", Palatino, serif;
+}
+.twitterpated-feed .standalone-tweet .subject .dateline {
+  margin-top: 6px;
+}
+.twitterpated-feed .standalone-tweet .subject .p-geo {
+  float: none;
+}
+.twitterpated-feed .standalone-tweet .subject .cards-base {
+  padding-bottom: 0;
+}
+.twitterpated-feed .standalone-tweet .subject .stats-narrow {
+  display: block;
+  float: left;
+  margin: 0;
+}
+.twitterpated-feed .standalone-tweet .subject .tweet-actions {
+  position: static;
+  float: right;
+  margin-bottom: 4px;
+  visibility: visible;
+}
+.twitterpated-feed .standalone-tweet .conversation {
+  padding: 8px 8px 4px 8px;
+  margin: -8px -8px 8px -8px;
+  background: #f6f6f6;
+  border-bottom: 1px solid #e8e8e8;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+.twitterpated-feed .standalone-tweet .reply {
+  position: relative;
+  min-height: 48px;
+  border: 0;
+}
+.twitterpated-feed .var-narrow .timeline-header .summary {
+  font-size: 14px;
+}
+.twitterpated-feed .var-narrow .header .profile .p-name, .twitterpated-feed .var-narrow .timeline-header .byline, .twitterpated-feed .var-narrow .timeline-header .list-description, .twitterpated-feed .var-narrow .e-entry-title, .twitterpated-feed .var-narrow .cards-base h3 {
+  font-size: 12px;
+  line-height: 16px;
+}
+.twitterpated-feed .var-narrow .timeline-header {
+  padding: 8px;
+}
+.twitterpated-feed .var-narrow .timeline-footer {
+  padding: 4px;
+}
+.twitterpated-feed .var-narrow .timeline-header .twitter-follow-button {
+  top: 6px;
+  right: 6px;
+}
+.twitterpated-feed .var-narrow .tweet {
+  padding: 5px 8px 6px 8px;
+}
+.twitterpated-feed .var-narrow .tweet .header {
+  position: relative;
+  _height: 36px;
+  min-height: 32px;
+  padding: 0 0 4px 36px;
+}
+.twitterpated-feed .var-narrow .header .avatar {
+  top: 2px;
+  left: 0;
+  width: 32px;
+  height: 32px;
+}
+.twitterpated-feed .var-narrow .header .profile .p-nickname::before {
+  white-space: pre;
+  content: "\A";
+}
+.twitterpated-feed .var-narrow .header .p-name {
+  display: inline;
+  padding-right: 10px;
+  _padding-right: 0;
+}
+.twitterpated-feed .var-narrow .verified {
+  position: absolute;
+  _position: static;
+  margin-left: -10px;
+  _margin-left: 0;
+}
+.twitterpated-feed .var-narrow .header .p-nickname {
+  line-height: 16px;
+}
+.twitterpated-feed .var-narrow .permalink {
+  font-size: 11px;
+}
+.twitterpated-feed .var-narrow .expanded .stats-wide {
+  display: none;
+}
+.twitterpated-feed .var-narrow .expanded .stats-narrow {
+  display: block;
+  margin: 0 0 4px 0;
+  font-size: 11px;
+}
+.twitterpated-feed .var-narrow .cards-base .summary-thumbnail {
+  max-width: 60px;
+  max-height: 60px;
+}
+.twitterpated-feed .standalone-tweet.var-narrow .subject {
+  margin-top: 1px;
+}
+.twitterpated-feed .standalone-tweet.var-narrow .subject .header .profile .p-name {
+  font-size: 14px;
+}
+.twitterpated-feed .standalone-tweet.var-narrow .subject .header .profile .p-nickname {
+  font-size: 12px;
+}
+.twitterpated-feed .standalone-tweet.var-narrow .subject .header {
+  margin-bottom: 8px;
+}
+.twitterpated-feed .standalone-tweet.var-narrow .subject .e-entry-title {
+  font-size: 16px;
+  line-height: 20px;
+}
+.twitterpated-feed .rtl, .twitterpated-feed .rtl .tweet-box-button {
+  text-align: right;
+  direction: rtl;
+}
+.twitterpated-feed .rtl .p-nickname {
+  text-align: left;
+  direction: ltr;
+}
+.twitterpated-feed .rtl .header {
+  _float: right;
+  _clear: right;
+}
+.twitterpated-feed .rtl .permalink, .twitterpated-feed .rtl .tweet-actions, .twitterpated-feed .rtl .cards-base .summary-thumbnail {
+  float: left;
+}
+.twitterpated-feed .rtl .expand, .twitterpated-feed .rtl .p-geo, .twitterpated-feed .rtl .tweet-actions li {
+  float: right;
+}
+.twitterpated-feed .rtl .permalink {
+  clear: left;
+}
+.twitterpated-feed .rtl .tweet {
+  padding: 12px 69px 10px 12px;
+}
+.twitterpated-feed .var-narrow.rtl .tweet {
+  padding: 5px 8px 6px 8px;
+}
+.twitterpated-feed .rtl .header .avatar {
+  right: -57px;
+  left: auto;
+}
+.twitterpated-feed .var-narrow.rtl .tweet .header {
+  padding: 0 36px 4px 0;
+}
+.twitterpated-feed .rtl.var-narrow .header .avatar {
+  right: 0;
+}
+.twitterpated-feed .rtl .tweet-actions {
+  right: auto;
+  left: 0;
+}
+.twitterpated-feed .rtl .timeline-header .twitter-follow-button, .twitterpated-feed .rtl .timeline-header .ic-twitter-badge {
+  position: absolute;
+  right: auto;
+  left: 12px;
+}
+.twitterpated-feed .var-narrow.rtl .timeline-header .twitter-follow-button {
+  right: auto;
+  left: 6px;
+}
+.twitterpated-feed .rtl .cards-base .source-user {
+  padding: 0 21px 0 0;
+}
+.twitterpated-feed .rtl .cards-base .source-user .avatar {
+  right: 0;
+  left: auto;
+}
+.twitterpated-feed .rtl .ic-top {
+  margin: 2px 0 0 4px;
+}
+.twitterpated-feed .rtl .ic-rt {
+  margin: 0 0 0 4px;
+}
+.twitterpated-feed .rtl .expand .ic-mask, .twitterpated-feed .rtl .p-geo .ic-mask {
+  margin: 0 0 0 2px;
+}
+.twitterpated-feed .rtl .stats span {
+  margin: 0 0 0 3px;
+}
+.twitterpated-feed .thm-dark {
+  color: #a9a9a9;
+  background-color: #333;
+}
+.twitterpated-feed .thm-dark .scrolled-down .timeline-header {
+  -webkit-box-shadow: 0 0 10px -3px black;
+  -moz-box-shadow: 0 0 10px -3px black;
+  box-shadow: 0 0 10px -3px black;
+}
+.twitterpated-feed .thm-dark .timeline-footer, .twitterpated-feed .thm-dark .twitter-tweet-box, .twitterpated-feed .standalone-tweet.thm-dark .conversation {
+  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.twitterpated-feed .thm-dark .load-more, .twitterpated-feed .thm-dark .nsfw, .twitterpated-feed .thm-dark .tweet-box-button {
+  background-color: #4a4a4a;
+  background-color: rgba(0, 0, 0, 0.64);
+}
+.twitterpated-feed .thm-dark .load-more {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+}
+.twitterpated-feed .thm-dark .load-more:hover, .twitterpated-feed .thm-dark .load-more:focus, .twitterpated-feed .thm-dark .load-more:active {
+  background-color: #666;
+  background-color: rgba(0, 0, 0, 0.39);
+}
+.twitterpated-feed .thm-dark .tweet-actions {
+  background-color: #333;
+  -webkit-box-shadow: 0 0 10px 5px #333;
+  -moz-box-shadow: 0 0 10px 5px #333;
+  box-shadow: 0 0 10px 5px #333;
+}
+.twitterpated-feed .thm-dark .expanded .footer {
+  border-color: #444;
+  border-color: rgba(255, 255, 255, 0.265);
+}
+.twitterpated-feed .thm-dark .customisable, .twitterpated-feed .thm-dark .customisable:link, .twitterpated-feed .thm-dark .customisable:visited, .twitterpated-feed .thm-dark .customisable:hover, .twitterpated-feed .thm-dark .customisable:active, .twitterpated-feed .thm-dark .customisable-highlight:hover, .twitterpated-feed .thm-dark a:hover .customisable-highlight, .twitterpated-feed .thm-dark a:focus .customisable-highlight {
+  color: #87c2ed;
+}
+.twitterpated-feed .thm-dark a:hover .ic-mask, .twitterpated-feed .thm-dark a:focus .ic-mask {
+  background-color: #87c2ed;
+}
+.twitterpated-feed .thm-dark, .twitterpated-feed .thm-dark .p-author .profile .p-name, .twitterpated-feed .thm-dark .cards-base p, .twitterpated-feed .thm-dark .cards-base p a, .twitterpated-feed .thm-dark .timeline-header .summary, .twitterpated-feed .thm-dark .timeline-header a:link, .twitterpated-feed .thm-dark .timeline-header a:visited, .twitterpated-feed .thm-dark .byline, .twitterpated-feed .thm-dark .p-author a.profile:hover .p-name, .twitterpated-feed .thm-dark .p-author a.profile:focus .p-name {
+  color: #cfcfcf;
+}
+.twitterpated-feed .thm-dark a:link, .twitterpated-feed .thm-dark a:visited, .twitterpated-feed .thm-dark .stats span, .twitterpated-feed .thm-dark .retweet-credit, .twitterpated-feed .thm-dark .no-more-pane, .twitterpated-feed .thm-dark .no-tweets-pane p, .twitterpated-feed .thm-dark .p-geo, .twitterpated-feed .thm-dark .cards-base .byline-user {
+  color: #999;
+}
+.twitterpated-feed .thm-dark a:hover, .twitterpated-feed .thm-dark a:active, .twitterpated-feed .thm-dark .p-author a.profile:hover, .twitterpated-feed .thm-dark .p-author a.profile:focus, .twitterpated-feed .thm-dark .retweet-credit .profile:hover, .twitterpated-feed .thm-dark .retweet-credit .profile:focus, .twitterpated-feed .thm-dark .stats strong, .twitterpated-feed .thm-dark .no-tweets-pane .load-tweets, .twitterpated-feed .thm-dark .nsfw {
+  color: #aaa;
+}
+.twitterpated-feed .thm-dark, .twitterpated-feed .thm-dark .timeline-header, .twitterpated-feed .thm-dark .tweet, .twitterpated-feed .thm-dark .cards-base {
+  border-color: #444;
+  border-color: rgba(255, 255, 255, 0.265);
+}
+.twitterpated-feed .thm-dark .twitter-tweet-box {
+  border-top: 1px #222 solid;
+  border-top-color: rgba(255, 255, 255, 0.13);
+}
+.twitterpated-feed .thm-dark .tweet-box-button, .twitterpated-feed .thm-dark .twitter-tweet-box {
+  border-color: #222;
+  border-color: rgba(255, 255, 255, 0.13);
+}
+.twitterpated-feed .thm-dark .ic-mask {
+  background-color: #999;
+}
+.twitterpated-feed .thm-dark .tweet-actions .ic-reply {
+  background-position: 0 -116px;
+}
+.twitterpated-feed .thm-dark .tweet-actions .ic-retweet {
+  background-position: -31px -116px;
+}
+.twitterpated-feed .thm-dark .tweet-actions .ic-fav {
+  background-position: -60px -116px;
+}
+.twitterpated-feed .thm-dark i.ic-pho {
+  background-position: -60px -59px;
+}
+.twitterpated-feed .thm-dark i.ic-pla {
+  background-position: -80px -59px;
+}
+.twitterpated-feed .thm-dark i.ic-geo {
+  background-position: -100px -59px;
+}
+.twitterpated-feed .thm-dark i.ic-sum {
+  background-position: -120px -59px;
+}
+.twitterpated-feed .thm-dark i.ic-con {
+  background-position: -140px -59px;
+}
+.twitterpated-feed .thm-dark i.ic-rt {
+  width: 14px;
+  background-color: #999;
+  background-position: -20px -59px;
+}
+.twitterpated-feed .is-touch .tweet-actions {
+  visibility: visible;
+}
+.twitterpated-feed .is-touch .tweet-actions a {
+  padding-left: 10px;
+}
+.twitterpated-feed .var-chromeless .tweet-actions .ic-mask, .twitterpated-feed .thm-dark.var-chromeless .tweet-actions .ic-mask, .twitterpated-feed .is-touch .tweet-actions .ic-mask, .twitterpated-feed .var-chromeless.is-touch .tweet-actions .ic-mask {
+  background-color: transparent;
+}
+.twitterpated-feed .var-chromeless .tweet-actions .ic-reply, .twitterpated-feed .is-touch .tweet-actions .ic-reply {
+  background-position: -82px -86px;
+}
+.twitterpated-feed .var-chromeless .tweet-actions .ic-retweet, .twitterpated-feed .is-touch .tweet-actions .ic-retweet {
+  background-position: -82px -104px;
+}
+.twitterpated-feed .var-chromeless .tweet-actions .ic-fav, .twitterpated-feed .is-touch .tweet-actions .ic-fav {
+  margin-top: -3px;
+  background-position: -82px -122px;
+}
+.twitterpated-feed .var-chromeless .tweet-actions a:hover .ic-reply, .twitterpated-feed .var-chromeless .tweet-actions a:focus .ic-reply, .twitterpated-feed .var-chromeless .tweet-actions a:active .ic-reply, .twitterpated-feed .is-touch .tweet-actions a:hover .ic-reply, .twitterpated-feed .is-touch .tweet-actions a:focus .ic-reply, .twitterpated-feed .is-touch .tweet-actions a:active .ic-reply {
+  background-position: -105px -86px;
+}
+.twitterpated-feed .var-chromeless .tweet-actions a:hover .ic-retweet, .twitterpated-feed .var-chromeless .tweet-actions a:focus .ic-retweet, .twitterpated-feed .var-chromeless .tweet-actions a:active .ic-retweet, .twitterpated-feed .is-touch .tweet-actions a:hover .ic-retweet, .twitterpated-feed .is-touch .tweet-actions a:focus .ic-retweet, .twitterpated-feed .is-touch .tweet-actions a:active .ic-retweet {
+  background-position: -109px -104px;
+}
+.twitterpated-feed .var-chromeless .tweet-actions a:hover .ic-fav, .twitterpated-feed .var-chromeless .tweet-actions a:focus .ic-fav, .twitterpated-feed .var-chromeless .tweet-actions a:active .ic-fav, .twitterpated-feed .is-touch .tweet-actions a:hover .ic-fav, .twitterpated-feed .is-touch .tweet-actions a:focus .ic-fav, .twitterpated-feed .is-touch .tweet-actions a:active .ic-fav {
+  background-position: -103px -122px;
+}
+.twitterpated-feed .var-preview .load-more {
+  display: none;
+}
+.twitterpated-feed .timeline.var-chromeless {
+  margin-bottom: 10px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+}
+.twitterpated-feed .var-chromeless .timeline-header {
+  padding: 12px 0;
+}
+.twitterpated-feed .var-chromeless .tweet {
+  padding: 12px 0 10px 58px;
+}
+.twitterpated-feed .var-narrow.var-chromeless .tweet {
+  padding: 12px 0 10px 0;
+}
+.twitterpated-feed .var-chromeless .timeline-footer {
+  padding: 6px;
+}
+.twitterpated-feed .var-chromeless .footer .expand .ic-mask {
+  display: none;
+}
+.twitterpated-feed .var-chromeless .tweet-actions {
+  background: 0;
+  box-shadow: none;
+}
+.twitterpated-feed .thm-dark.var-chromeless .ic-rt {
+  width: 18px;
+  background-color: transparent;
+  background-position: -60px -141px;
+}
+.twitterpated-feed .var-chromeless button.load-more {
+  text-shadow: none;
+}
+.twitterpated-feed .var-chromeless .p-geo i.ic-mask {
+  display: none;
+}
+.twitterpated-feed .footer {
+  border: none;
+}
+
+.twitterpated-feed .feed-header {
+  float:left;
+  width: 100%;
+}
+
+.twitterpated-feed .feed-header img {
+  float: left;
+  width: 48px;
+  height: 48px;
+}
+.twitterpated-feed .feed-header h3 {
+  float: left;
+  font-size: 18px;
+  line-height: 48px;
+  font-weight: 700;
+  font-family: "open sans", helvetica, arial, sans-serif;
+}
+
+.twitterpated-feed .feed-header a:hover h3 {
+  color: #027988;
+}
+
+.twitterpated-feed ol.h-feed {
+  float: left;
+}
+
+
+
