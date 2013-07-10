@@ -35,10 +35,12 @@ if (!class_exists('Tweet')) {
 
         private function replace_hashtags($text) {
             $replaced_hashtags = array();
-            foreach ($this->entities->hashtags as $hashtag) {
-                if (!in_array($hashtag->text, $replaced_hashtags)) {
-                    $replaced_hashtags[] = $hashtag->text;
-                    $text = preg_replace('/#' . $hashtag->text . '\b/', '<a href="https://twitter.com/search?q=%23' . $hashtag->text . '&amp;src=hash" data-query-source="hashtag_click" class="hashtag customisable" dir="ltr" rel="tag" target="_blank">#<b>' . $hashtag->text . '</b></a>', $text);
+            if(!empty($this->entities->hashtags)){
+                foreach ($this->entities->hashtags as $hashtag) {
+                    if (!in_array($hashtag->text, $replaced_hashtags)) {
+                        $replaced_hashtags[] = $hashtag->text;
+                        $text = preg_replace('/#' . $hashtag->text . '\b/', '<a href="https://twitter.com/search?q=%23' . $hashtag->text . '&amp;src=hash" data-query-source="hashtag_click" class="hashtag customisable" dir="ltr" rel="tag" target="_blank">#<b>' . $hashtag->text . '</b></a>', $text);
+                    }
                 }
             }
 
@@ -47,10 +49,12 @@ if (!class_exists('Tweet')) {
 
         private function replace_mentions($text) {
             $replaced_users = array();
-            foreach ($this->entities->user_mentions as $user_mention) {
-                if (!in_array($user_mention->screen_name, $replaced_users)) {
-                    $replaced_users[] = $user_mention->screen_name;
-                    $text = preg_replace('/@' . $user_mention->screen_name . '\b/i', '<a href="https://twitter.com/intent/user?screen_name=' . $user_mention->screen_name . '" class="profile customisable h-card" dir="ltr">@<b class="p-nickname">' . $user_mention->screen_name . '</b></a>', $text);
+            if(!empty($this->entities->user_mentions)){
+                foreach ($this->entities->user_mentions as $user_mention) {
+                    if (!in_array($user_mention->screen_name, $replaced_users)) {
+                        $replaced_users[] = $user_mention->screen_name;
+                        $text = preg_replace('/@' . $user_mention->screen_name . '\b/i', '<a href="https://twitter.com/intent/user?screen_name=' . $user_mention->screen_name . '" class="profile customisable h-card" dir="ltr">@<b class="p-nickname">' . $user_mention->screen_name . '</b></a>', $text);
+                    }
                 }
             }
 
@@ -59,12 +63,14 @@ if (!class_exists('Tweet')) {
 
         private function replace_urls($text) {
             $replaced_urls = array();
-            foreach ($this->entities->urls as $url) {
-                if (!in_array($url->url, $replaced_urls)) {
-                    $replaced_users[] = $url->url;
-
-                    $replacement_text = '<a href="' . $url->url . '"dir="ltr" data-expanded-url="' . $url->expanded_url . '" class="link customisable" target="_blank" title="' . $url->expanded_url . '">' . $url->url . '</a>';
-                    $text = str_replace($url->url, $replacement_text, $text);
+            if(!empty($this->entities->urls)){
+                foreach ($this->entities->urls as $url) {
+                    if (!in_array($url->url, $replaced_urls)) {
+                        $replaced_users[] = $url->url;
+    
+                        $replacement_text = '<a href="' . $url->url . '"dir="ltr" data-expanded-url="' . $url->expanded_url . '" class="link customisable" target="_blank" title="' . $url->expanded_url . '">' . $url->url . '</a>';
+                        $text = str_replace($url->url, $replacement_text, $text);
+                    }
                 }
             }
 
@@ -75,12 +81,14 @@ if (!class_exists('Tweet')) {
 
         private function replace_media($text) {
             $replaced_media = array();
-            foreach ($this->entities->media as $media) {
-                if (!in_array($media->url, $replaced_media)) {
-                    $replaced_media[] = $url->url;
-
-                    $replacement_text = '<a href="' . $media->url . '"dir="ltr" data-expanded-url="' . $media->expanded_url . '" class="link customisable" target="_blank" title="' . $media->expanded_url . '">' . $media->url . '</a>';
-                    $text = str_replace($media->url, $replacement_text, $text);
+            if(!empty($this->entities->media)){
+                foreach ($this->entities->media as $media) {
+                    if (!in_array($media->url, $replaced_media)) {
+                        $replaced_media[] = $url->url;
+    
+                        $replacement_text = '<a href="' . $media->url . '"dir="ltr" data-expanded-url="' . $media->expanded_url . '" class="link customisable" target="_blank" title="' . $media->expanded_url . '">' . $media->url . '</a>';
+                        $text = str_replace($media->url, $replacement_text, $text);
+                    }
                 }
             }
 
