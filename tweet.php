@@ -35,10 +35,12 @@ if (!class_exists('Tweet')) {
 
         private function replace_hashtags($text) {
             $replaced_hashtags = array();
-            foreach ($this->entities->hashtags as $hashtag) {
-                if (!in_array($hashtag->text, $replaced_hashtags)) {
-                    $replaced_hashtags[] = $hashtag->text;
-                    $text = preg_replace('/#' . $hashtag->text . '\b/', '<a href="https://twitter.com/search?q=%23' . $hashtag->text . '&amp;src=hash" data-query-source="hashtag_click" class="hashtag customisable" dir="ltr" rel="tag" target="_blank">#<b>' . $hashtag->text . '</b></a>', $text);
+            if(!empty($this->entities->hashtags)){
+                foreach ($this->entities->hashtags as $hashtag) {
+                    if (!in_array($hashtag->text, $replaced_hashtags)) {
+                        $replaced_hashtags[] = $hashtag->text;
+                        $text = preg_replace('/#' . $hashtag->text . '\b/', '<a href="https://twitter.com/search?q=%23' . $hashtag->text . '&amp;src=hash" data-query-source="hashtag_click" class="hashtag customisable" dir="ltr" rel="tag" target="_blank">#<b>' . $hashtag->text . '</b></a>', $text);
+                    }
                 }
             }
 
